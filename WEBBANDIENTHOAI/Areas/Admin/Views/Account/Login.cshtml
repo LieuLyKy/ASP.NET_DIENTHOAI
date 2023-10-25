@@ -1,0 +1,85 @@
+﻿@model WEBBANDIENTHOAI.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Admin/Views/Shared/_daodienLogin.cshtml";
+}
+<link href="~/Content/css/uii.css" rel="stylesheet" />
+
+<style>
+</style>
+
+<div style="background-image: url(https://freenice.net/wp-content/uploads/2021/09/hinh-anh-gif-dan-cuu-vui-nhon.gif); background-size:100% " class="section">
+    <div class="container">
+        <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+                <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                    <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                    <label for="reg-log"></label>
+                    <div class="card-3d-wrap mx-auto">
+                        <div class="card-3d-wrapper">
+                            <div class="card-front">
+                                <div class="center-wrap">
+                                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true);
+                                    <div class="section text-center">
+
+                                        <h4 class="mb-4 pb-3">Log In</h4>
+                                        <div class="form-group">
+
+                                            @*<i class="input-icon uil uil-at"></i>*@
+                                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "Tài khoản" })
+                                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group mt-2">
+
+                                            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                        @Html.CheckBoxFor(x => x.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)
+                                        <div class="col-4">
+                                            <button style="width:100px; margin-top: 30px; margin-left: 120px;" type="submit" class="btn btn-primary btn-block">Login</button>
+                                        </div>
+                                        @*<p class="btn mt-4">Login</p>*@
+                                    <p class="mb-0 mt-4 text-center"> @Html.ActionLink("Register as a new user", "Register")</p>
+                                    </div>
+
+                                    }
+                          
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="center-wrap">
+                                    <div class="section text-center">
+                                        <h4 class="mb-3 pb-3">Sign Up</h4>
+                                        <div class="form-group">
+                                            <input type="text" class="form-style" placeholder="Full Name">
+                                            <i class="input-icon uil uil-user"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="tel" class="form-style" placeholder="Phone Number">
+                                            <i class="input-icon uil uil-phone"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="email" class="form-style" placeholder="Email">
+                                            <i class="input-icon uil uil-at"></i>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <input type="password" class="form-style" placeholder="Password">
+                                            <i class="input-icon uil uil-lock-alt"></i>
+                                        </div>
+                                        <a href="https://www.web-leb.com/code" class="btn mt-4">Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

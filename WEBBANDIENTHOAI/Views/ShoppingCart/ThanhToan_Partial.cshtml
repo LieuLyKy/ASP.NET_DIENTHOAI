@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WEBBANDIENTHOAI.Models.ShoppingCartItem>
+
+
+
+@if (Model != null && Model.Any())
+{
+
+    <h3>GIỎ HÀNG <span style="float:right;position:relative;background-color: red;border-radius: 40px;width: 30px;position: relative;right: 0px;" position:relative"><small>@Model.Count()</small></span></h3>
+    
+    var i = 0;
+    var tongtien = decimal.Zero;
+    <div style="border:1px solid #808080;">
+        <table class="table">
+            <td scope="col" width="120">Tên</td>
+            <td scope="col" width="120">Ảnh</td>
+            <td scope="col" width="120">Giá</td>
+            <td scope="col" width="120">SL</td>
+            <td scope="col" width="120">Thành Tiền</td>
+            @foreach (var item in Model)
+            {
+                tongtien += item.TotalPrice;
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td><img src="@item.ProductImg" width="60" /></td>
+                    <td> @String.Format("{0:0,0}", item.Price, 0)</td>
+                    <td>@item.Quantity </td>
+                    <td> @String.Format("{0:0,0}", item.TotalPrice, 2)</td>
+                </tr>
+            }
+            <tr>
+                <td>Tổng tiền</td>
+                <th> @String.Format("{0:0,0}", tongtien, 0)</th>
+            </tr>
+        </table>
+    </div>
+
+}
+else
+{
+
+}
+
+

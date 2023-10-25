@@ -1,0 +1,46 @@
+﻿@model WEBBANDIENTHOAI.Models.MFC.Subscribe
+
+<section class="section-subscribe padding-y-lg">
+    <div class="container">
+
+        <p class="pb-2 text-center text-white">Cung cấp các xu hướng sản phẩm mới nhất và tin tức ngành trực tiếp đến các bạn</p>
+
+        <div class="row justify-content-md-center">
+            @using (Ajax.BeginForm("DangKy", "Home", new AjaxOptions
+            {
+                OnBegin = "OnBeginSub",
+                OnSuccess = "OnSuccessSub",
+                OnFailure = "OnFailureSub"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <script>
+                    function OnBeginSub() {
+
+                    }
+                    function OnSuccessSub(rs) {
+                        if (rs.Success) {
+                            alert("Thành Công");
+                        }
+                    }
+                    function OnFailureSub(rs) { alert("Lỗi gửi"); }
+                </script>
+                <div style="margin-left: 170px;" class="col-lg-5 col-md-6">
+                    <form class="form-row">
+                        <div class="col-md-8 col-7">
+
+                            <input style="width: 290px;" name="Email" class="form-control border-0" placeholder="Email bạn" type="email">
+                        </div> <!-- col.// -->
+                        <div style="margin-left: 55px;" class="col-md-4 col-5">
+                            <button style="width: 190px;" type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Đăng ký </button>
+                        </div> <!-- col.// -->
+                    </form>
+                    <small class="form-text text-white-50">Chúng tôi sẽ không bao giờ chia sẻ thông tin của bạn với những nguồn thông tin lạ. </small>
+                </div> <!-- col-md-6.// -->
+            }
+
+        </div>
+
+
+    </div>
+</section>

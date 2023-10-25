@@ -1,0 +1,319 @@
+﻿@model IEnumerable<WEBBANDIENTHOAI.Models.MFC.Product>
+
+
+
+@if (Model != null && Model.Any())
+{
+
+
+    <!-- =============== SECTION 1 =============== -->
+    <section class="padding-bottom">
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">Điện Thoại</h4>
+        </header>
+
+        <div class="card card-home-category">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+
+                    <div class="home-category-banner bg-light-orange">
+                        <h5 class="title">Sản phẩm điện thoại thịnh hành hiện nay</h5>
+                        <p>Các dòng sản phẩm nổi bật sẻ luôn được chúng tôi cập nhập thường xuyên. </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Xem ngay</a>
+                        <img src="~/Content/images/items/anhdaidieniphone1.jpg" class="img-bg">
+                    </div>
+
+                </div> <!-- col.// -->
+                <div class="col-md-9">
+                    <ul class="row no-gutters bordered-cols">
+                        @*@foreach (var item in Model.ListProduct.Where(n => n.BrandId == 1).Take(8))*@
+                        @foreach (var item in Model.Where(n => n.ProductCategoryId == 1).Take(4))
+                        {
+                            var strImge = "";
+                            var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                            if (img != null)
+                            {
+                                strImge = img.Image;
+                            }
+                            <li class="col-6 col-lg-3 col-md-4">
+                                @*<a href="@Url.Action("Detail", "Product", new { Id = item.Id })" class="item">*@
+                                @*<div> class="product-item @item.ProductCategory.Alias"</div>*@
+                                <div class="card-body">
+                                    <div class="product_image">
+                                        <a href="/chi-tiet/@item.Alias-p@(item.Id)"><img src="@strImge" alt="@item.Title"></a>
+                                        @*<img src="@strImge" alt="@item.Title">*@
+                                    </div>
+                                    @if (item.PriceSale > 0)
+                                    {
+                                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Sale</span></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Hot!!</span></div>
+                                    }
+                                    @*<h6 class="title"> @item.Title </h6>*@
+                                    @*<img class="@item.Image">*@
+
+                                    @*<h6 class="text-muted"><i class="fa fa-map-marker-alt"></i> @String.Format("{0:0,0}", @item.Price) VNĐ</h6>*@
+                                    @*<a class="btn btn-success" href="@Url.Action("Detail", "Product", new { Id = item.Id })">Chi Tiết</a>*@
+                                    <div class="product_info">
+                                        <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                                        @if (item.PriceSale > 0)
+                                        {
+                                            <div class="product_price">@String.Format("{0:0,0}", @item.PriceSale) VNĐ</div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="product_price">@String.Format("{0:0,0}", @item.Price) VNĐ</div>
+                                        }
+                                    </div>
+                                    <a href="#" class="btn  btn-primary">
+                                        <i class="fas fa-shopping-cart"></i> <span  class="btnAddToCart" data-id="@item.Id">Add to cart</span>
+                                    </a>
+
+
+                                </div>
+
+                            </li>
+
+                        }
+
+
+                    </ul>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </section>
+
+    <!-- =============== SECTION 2 =============== -->
+
+    <section class="padding-bottom">
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">LapTop</h4>
+        </header>
+
+        <div class="card card-home-category">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+
+                    <div class="home-category-banner bg-light-orange">
+                        <h5 class="title">Sản phẩm LapTop phổ biến hiện nay</h5>
+                        <p>Các dòng sản phẩm nổi bật sẻ luôn được chúng tôi cập nhập thường xuyên. </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Xem ngay</a>
+                        <img src="~/Content/images/items/samsungdaidien3.jpg" class="img-bg">
+                    </div>
+
+                </div> <!-- col.// -->
+                <div class="col-md-9">
+                    <ul class="row no-gutters bordered-cols">
+                        @*@foreach (var item in Model.ListProduct.Where(n => n.BrandId == 2).Take(8))*@
+                        @foreach (var item in Model.Where(n => n.ProductCategoryId == 2).Take(4))
+                        {
+                            var strImge = "";
+                            var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                            if (img != null)
+                            {
+                                strImge = img.Image;
+                            }
+                            <li class="col-6 col-lg-3 col-md-4">
+                                @*<a href="@Url.Action("Detail", "Product", new { Id = item.Id })" class="item">*@
+                                @*<div> class="product-item @item.ProductCategory.Alias"</div>*@
+                                <div class="card-body">
+                                    <div class="product_image">
+                                        <a href="/chi-tiet/@item.Alias-p@(item.Id)"><img src="@strImge" alt="@item.Title"></a>
+                                    </div>
+                                    @if (item.PriceSale > 0)
+                                    {
+                                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Sale</span></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Hot!!</span></div>
+                                    }
+                                    @*<h6 class="title"> @item.Title </h6>*@
+                                    @*<img class="@item.Image">*@
+
+                                    @*<h6 class="text-muted"><i class="fa fa-map-marker-alt"></i> @String.Format("{0:0,0}", @item.Price) VNĐ</h6>*@
+                                    @*<a class="btn btn-success" href="@Url.Action("Detail", "Product", new { Id = item.Id })">Chi Tiết</a>*@
+                                    <div class="product_info">
+                                        <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                                        @if (item.PriceSale > 0)
+                                        {
+                                            <div class="product_price">@String.Format("{0:0,0}", @item.PriceSale) VNĐ</div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="product_price">@String.Format("{0:0,0}", @item.Price) VNĐ</div>
+                                        }
+                                    </div>
+                                    <a href="#" class="btn  btn-primary">
+                                        <i class="fas fa-shopping-cart"></i> <span class="btnAddToCart" data-id="@item.Id">Add to cart</span>
+                                    </a>
+
+
+                                </div>
+
+                            </li>
+
+                        }
+
+
+                    </ul>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </section>
+
+
+}
+
+<!-- =============== SECTION 3 =============== -->
+
+<section class="padding-bottom">
+    <header class="section-heading heading-line">
+        <h4 class="title-section text-uppercase">Đồng Hồ</h4>
+    </header>
+
+    <div class="card card-home-category">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+
+                <div class="home-category-banner bg-light-orange">
+                    <h5 class="title">Sản phẩm Đồng hồ phổ biến hiện nay</h5>
+                    <p>Các dòng sản phẩm nổi bật sẻ luôn được chúng tôi cập nhập thường xuyên. </p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill">Xem ngay</a>
+                    <img src="~/Content/images/items/DongHo.png" class="img-bg">
+                </div>
+
+            </div> <!-- col.// -->
+            <div class="col-md-9">
+                <ul class="row no-gutters bordered-cols">
+                    @*@foreach (var item in Model.ListProduct.Where(n => n.BrandId == 2).Take(8))*@
+                    @foreach (var item in Model.Where(n => n.ProductCategoryId == 1002).Take(4))
+                    {
+                        var strImge = "";
+                        var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+                        if (img != null)
+                        {
+                            strImge = img.Image;
+                        }
+                        <li class="col-6 col-lg-3 col-md-4">
+                            @*<a href="@Url.Action("Detail", "Product", new { Id = item.Id })" class="item">*@
+                            @*<div> class="product-item @item.ProductCategory.Alias"</div>*@
+                            <div class="card-body">
+                                <div class="product_image">
+                                    <a href="/chi-tiet/@item.Alias-p@(item.Id)"><img src="@strImge" alt="@item.Title"></a>
+                                </div>
+                                @if (item.PriceSale > 0)
+                                {
+                                    <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Sale</span></div>
+                                }
+                                else
+                                {
+                                    <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Hot!!</span></div>
+                                }
+                                @*<h6 class="title"> @item.Title </h6>*@
+                                @*<img class="@item.Image">*@
+
+                                @*<h6 class="text-muted"><i class="fa fa-map-marker-alt"></i> @String.Format("{0:0,0}", @item.Price) VNĐ</h6>*@
+                                @*<a class="btn btn-success" href="@Url.Action("Detail", "Product", new { Id = item.Id })">Chi Tiết</a>*@
+                                <div class="product_info">
+                                    <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                                    @if (item.PriceSale > 0)
+                                    {
+                                        <div class="product_price">@String.Format("{0:0,0}", @item.PriceSale) VNĐ</div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="product_price">@String.Format("{0:0,0}", @item.Price) VNĐ</div>
+                                    }
+                                </div>
+                                <a href="#" class="btn  btn-primary">
+                                    <i class="fas fa-shopping-cart"></i> <span class="btnAddToCart" data-id="@item.Id">Add to cart</span>
+                                </a>
+
+                            </div>
+
+                        </li>
+
+                    }
+
+
+                </ul>
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card.// -->
+</section>
+
+<!-- =============== Đề Xuất =============== -->
+
+<section class="padding-bottom-sm">
+
+    <header class="section-heading heading-line">
+        <h4 class="title-section text-uppercase">Sản Phẩm Đề Xuất</h4>
+    </header>
+
+    <div class="row row-sm">
+
+        @*@foreach (var item in Model.ListProduct.Where(n => n.TypeId == 2).Take(12))*@
+        @foreach (var item in Model)
+        {
+            var strImge = "";
+            var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+            if (img != null)
+            {
+                strImge = img.Image;
+            }
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                <div href="#" class="card card-sm card-product-grid">
+
+                    @*<a href="@Url.Action("Detail", "Product", new { Id = item.Id })" class="img-wrap"> <img src="~/Content/images/@item.Avartar"> </a>*@
+                    <div class="product_image">
+                        <a href="/chi-tiet/@item.Alias-p@(item.Id)"><img src="@strImge" alt="@item.Title"></a>
+                    </div>
+                    @if (item.PriceSale > 0)
+                    {
+                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Sale</span></div>
+                    }
+                    else
+                    {
+                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span style=" color: #fff; background-color: #fa3434; border-radius:10px">Hot!!</span></div>
+                    }
+                    @*<h6 class="title"> @item.Title </h6>*@
+                    @*<img class="@item.Image">*@
+
+                    @*<h6 class="text-muted"><i class="fa fa-map-marker-alt"></i> @String.Format("{0:0,0}", @item.Price) VNĐ</h6>*@
+                    @*<a class="btn btn-success" href="@Url.Action("Detail", "Product", new { Id = item.Id })">Chi Tiết</a>*@
+                    <div class="product_info">
+                        <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                        @if (item.PriceSale > 0)
+                        {
+                            <div class="product_price">@String.Format("{0:0,0}", @item.PriceSale) VNĐ</div>
+
+                        }
+                        else
+                        {
+                            <div class="product_price">@String.Format("{0:0,0}", @item.Price) VNĐ</div>
+                        }
+                    </div>
+                    <a href="#" class="btn  btn-primary">
+                        <i class="fas fa-shopping-cart"></i> <span class="btnAddToCart" data-id="@item.Id">Add to cart</span>
+                    </a>
+                    <!--<figcaption class="info-wrap">-->
+                    @*<a href="#" class="title">@item.Name</a>*@
+                    @*@Html.ActionLink(item.Name, "Detail", "Product", new { Id = item.Id }, null)*@
+                    @*<div class="price mt-1">@String.Format("{0:0,0}", @item.Price) VNĐ</div>  price-wrap.//*@
+                    <!--</figcaption>-->
+                </div>
+            </div> <!-- col.// -->
+        }
+
+
+
+    </div> <!-- row.// -->
+</section>
+
+

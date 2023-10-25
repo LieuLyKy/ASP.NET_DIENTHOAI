@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WEBBANDIENTHOAI.Models.MFC.News>
+
+
+@if (Model != null && Model.Any())
+{
+    <section class="padding-bottom">
+
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">Tin tức</h4>
+        </header>
+        <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-sm-6">
+                <article class="card card-post">
+                    <div class="card-img-top" style="background-image: url( @item.Image ); background-size: 100%; background-repeat: no-repeat;"></div>
+                    @*<img src="~/Content/images/posts/1.jpg" class="card-img-top">*@
+                    <div class="card-body">
+                        <h6 class="title">@item.Title</h6>
+                        <p class="small text-uppercase text-muted">BẢO VỆ ĐƠN HÀNG</p>
+                    </div>
+                </article> <!-- card.// -->
+            </div> <!-- col.// -->
+        }
+        </div> <!-- row.// -->
+
+    </section>
+
+}
+
+

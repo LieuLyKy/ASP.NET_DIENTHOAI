@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WEBBANDIENTHOAI.Models.MFC.ProductCategory>
+
+@if (Model != null && Model.Any())
+{
+
+    <aside class="col-lg col-md-3 flex-lg-grow-0">
+        <h6>Danh mục</h6>
+        <nav class="nav-home-aside">
+            <ul class="menu-category">
+                @foreach (var item in Model)
+                {
+                    if (ViewBag.CateId == item.Id)
+                    {
+                        <li>
+                            <a href="/danh-muc-san-pham/@item.Alias">@item.Title</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="/danh-muc-san-pham/@item.Alias-@(item.Id)">@item.Title</a></li>
+                    }
+
+                }
+
+
+
+            </ul>
+        </nav>
+    </aside>
+    <!-- col.// -->
+}
